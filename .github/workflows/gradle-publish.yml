@@ -68,6 +68,12 @@ jobs:
         with:
           gradle-version: 6.7.1
           arguments: core:check
+      - name: Upload Unit Test Results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: Unit Test Results
+          path: '**/build/test-results/test/TEST-*.xml'
     # Returns Exit Code 1 if find Error/Failed tests
           stop_on_failed: false # optional, default is true
     # Returns Exit Code 1 if find Error/Failed test
